@@ -1,0 +1,411 @@
+//Переменные
+$fontcolor: #282828; 
+$bordercolor: #aaa;
+$inputheight: 35px;
+
+//Шрифты
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,700,300&subset=latin,greek-ext);
+
+//Общие стили
+*{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body{
+	background-color: #fff;
+	font-family: 'Open Sans', sans-serif;
+	background-color: #EFEFEF;
+	font-size: 16px;
+	line-height: 20px;
+
+	 &.scroll-block{
+	 	overflow: hidden;
+	 }
+
+	 a{
+	 	text-decoration: none;
+	 	color: #999;
+
+	 	&:hover{
+	 		color: $fontcolor;
+	 	}
+	 }
+}
+b,strong{
+	font-weight: bold;
+}
+.font_bolder{
+	font-weight: 600;
+}
+.center{
+	text-align: center;
+}
+i,em{
+	font-style: italic;
+}
+html * {
+	max-height:1000000px;
+}
+.clearfix{
+	clear: both;
+}
+.clear:after{
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+.app-block{
+	padding: 20px;
+}
+
+//Окно загрузки и ожидания
+.loading-overlay{
+	position: fixed;
+	top: 0px; left: 0px;
+	bottom: 0px; right: 0px;
+	width: 100%; height: 100%;
+	background-color: rgba(238,238,239,0.7);
+	text-align: center;
+	background-image: url(../img/ajax-loader.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+//Обёртка телефонной книги
+.phonebook-wrapper{
+	max-width: 1480px;
+	margin: 20px auto;
+	padding: 30px 50px;
+	border-radius: 50px;
+	background-color: #fff;
+
+	&.form-wrapper{
+		max-width: 700px;
+	}
+
+	h2{
+		font-size: 25px;
+		line-height: 32px;
+		font-weight: bold;
+		color: $fontcolor;
+		margin-bottom: 20px;
+	}
+	
+	//Сообщение об ошибке
+	.send-error-text{
+		font-size: 16px;
+	    line-height: 20px;
+		color: #f80000;
+	}
+	
+	//Кнопки ссылок
+	.buttons-wrapper{
+		width: auto;
+		margin-right: -10px;
+		margin-left: -10px;
+		margin-top: 10px;
+
+		&.buttons-right{
+			text-align: right;
+		}
+	}
+
+	.button-link{
+		display: inline-block;
+		vertical-align: top;
+		margin: 0px 10px;
+		padding: 10px 35px;
+		font-size: 18px;
+		line-height: 24px;
+		text-decoration: none;
+		text-align: center;
+		border: 1px solid $bordercolor;
+		border-radius: 15px;
+		cursor: pointer;
+		outline: none;
+		background-color: #FFF;
+		color: $fontcolor;
+
+		&:hover{
+			background-color: $bordercolor;
+			color: #fff;
+		}
+
+		&.opposite{
+			background-color: $bordercolor;
+			color: #fff;
+			&:hover{
+				background-color: #FFF;
+				color: $fontcolor;
+			}
+		}
+
+		&.mobile-only{
+			display: none;
+		}
+	}
+}
+
+//Таблица телефонов
+.phonebook-table{
+	width: 100%;
+
+	th,td{
+		border-bottom: 1px solid $bordercolor;
+		border-left: 1px solid $bordercolor;
+		border-right: 1px solid $bordercolor;
+		padding: 10px 8px;
+		font-size: 16px;
+
+		&:first-child{
+			border-left: none;
+		}
+
+		&:last-child{
+			border-right: none;
+		}
+
+		&.no-border-cell{
+			border-left: none;
+			border-right: none;
+		}
+
+		&.center-cell{
+			text-align: center;
+		}
+	}
+
+	th{
+		vertical-align: bottom;
+		font-size: 18px;
+		border-left: none;
+		border-right: none;
+		text-align: left;
+	}
+
+	td{
+		color: $fontcolor;
+	}
+
+	th, td.cell-id{
+		font-weight: bold;		
+		color: $fontcolor;
+	}
+
+	td.cell-id, th.cell-id{
+		width: 40px;
+		text-align: center;
+	}
+
+	td.action-cell{
+		vertical-align: middle;
+		width: 65px;
+	}
+
+	.action-link{
+		display: inline-block;
+		width: 32px; height: 32px;
+		background-image: url(../img/icons.png);
+		background-repeat: no-repeat;
+		cursor: pointer;
+		outline: none;
+
+		&.mobile-only{
+			display: none;
+		}
+
+		&.edit{
+			background-position: -33px 0px;
+			&:hover{
+				background-position: -33px -33px;
+			}
+		}
+
+		&.delete{
+			background-position: 0px 0px;
+			&:hover{
+				background-position: 0px -33px;
+			}
+		}
+	}
+
+	.add-link{
+		text-decoration: none;
+		font-size: 22px;
+		font-weight: bold;
+		color: #999;
+
+		&:hover{
+			color: #c0c0c0;
+		}
+	}
+}
+
+//Всплывающеее сообщение
+.popup-overlay{
+	display: none;
+	position: fixed;
+	top: 0px; left: 0px;
+	bottom: 0px; right: 0px;
+	width: 100%; height: 100%;
+	background-color: rgba(238,238,239,0.7);
+	text-align: center;
+
+	.popup-container{
+		display: block;
+		width: 450px;
+		position: absolute;
+	    left: 50%;
+	    top: 50%;
+	    transform: translate(-50%, -50%);
+	}
+
+	.popup-window{
+		padding: 20px;
+	    background-color: #fff;
+	    color: $fontcolor;
+	    border-radius: 20px;
+
+	    p{
+	    	font-size: 16px;
+			margin-bottom: 20px;
+	    }
+	}
+}
+
+//Формы
+.form-block{
+	display: block;
+	width: 100%;
+	margin-bottom: 5px;
+
+	label{
+		display: block;
+		font-size: 16px;
+		color: #888;
+		margin-bottom: 5px;
+	}
+	
+	//Текстовое поле
+	input[type=text]{
+		width: 100%;
+		background: #FFF;
+	    border: 1px solid #A0A0A0;
+	    color: $fontcolor;
+	    font-size: 17px;
+	    height: $inputheight;
+	    margin-bottom: 5px;
+	    padding: 0 5px 0 5px;
+	    outline: none;
+
+
+		&.error-input{
+			border-color: #f80000;	
+		}
+	}
+
+	.input-wrapper{
+		position: relative;
+	}
+	
+	//Валидация
+	.error-text-block{
+		display: none;
+	    position: absolute;
+	    width: 300px;
+	    right: 0px;
+	    top: $inputheight + 6px;
+	    font-size: 14px;
+	    line-height: 16px;
+	    z-index: 2;
+	    background-color: #f80000;
+	    color: #fff;
+	    border-radius: 5px;
+	    padding: 5px;
+
+		&:after, &:before {
+		    content: "";
+		    position: absolute;
+		    left: 20px;
+		    top: -14px;
+		    border: 7px solid transparent;
+		    border-bottom: 7px solid #f80000;
+		}
+
+		&:after {
+		    border-bottom: 7px solid #f80000;
+		    top: -13px;
+		}
+	}
+	
+	//Поле select
+	.select-wrapper{
+		margin-bottom: 5px;
+
+		select{
+			position: relative;
+			width: 150%;
+			background: #FFF;		    
+		    color: $fontcolor;
+		    font-size: 17px;
+		    height: $inputheight;
+		    padding: 0 5px 0 5px;
+		    outline: none;		    
+		    visibility: visible;
+		    border: none;
+		    z-index: 2;
+		    background-color: transparent;
+		}
+
+		.select-block-wrapper{
+			display: inline-block;
+			float: left;
+		}
+
+		.select-block{			
+			position: relative;
+    		overflow: hidden;
+			border: 1px solid #A0A0A0;
+
+			&.error-input{
+				border-color: #f80000;	
+			}
+
+			&:after{
+				content: "";
+			    position: absolute;
+			    right: 0;
+			    top: 0px;
+			    width: 25px;
+			    height: 100%;
+			    text-align: center;
+			    background: transparent;
+			    color: #000;
+			    font-size: 10px;
+			    z-index: 0;
+			    background: url(../img/select.png);
+			    background-repeat: no-repeat;
+			    background-position: 5px center;
+			}
+		}
+
+		.day-select{
+			width: 15%;
+			padding-right: 10px;
+		}
+
+		.mounth-select{
+			width: 60%;
+			padding-right: 10px;
+		}
+
+		.year-select{
+			width: 25%;
+		}
+	}
+}

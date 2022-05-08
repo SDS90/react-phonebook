@@ -1,0 +1,24 @@
+{
+  "name": "react-phonebook",
+  "version": "1.0.0",
+  "description": "Телефонный справочник на react js",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SDS90/react-phonebook.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SDS90/react-phonebook/issues"
+  },
+  "homepage": "https://github.com/SDS90/react-phonebook#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
